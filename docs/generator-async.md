@@ -310,13 +310,11 @@ readFileThunk(callback);
 ```javascript
 // ES5版本
 var Thunk = function(fn){
-  return function (){
-    var args = Array.prototype.slice.call(arguments);
-    return function (callback){
+  return function (callback){
+      var args = Array.prototype.slice.call(arguments);
       args.push(callback);
       return fn.apply(this, args);
-    }
-  };
+  }
 };
 
 // ES6版本
